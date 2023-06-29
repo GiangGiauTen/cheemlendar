@@ -6,23 +6,31 @@ import React, { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { Tree } from 'antd'
 import TaskCell from './TaskCell'
-import { TreeNode } from 'antd/es/tree-select'
-
+import Image from 'next/image'
+import MoreInfoSVG from '@public/icons/MoreInfoSVG'
+import Icon, { ClockCircleOutlined, FileProtectOutlined, TeamOutlined } from '@ant-design/icons'
+import './detail.css'
 type Props = {}
+interface Team {
+	public: boolean
+	team_id: number
+	team_name: string
+	description: string
+}
 
 const Detail = (props: Props) => {
 	const [imageUrl, setImageUrl] = useState('')
 	const [teamId, setTeamId] = useState<string | undefined>('')
 	const pathName = usePathname()
 	const [tasks, setTasks] = useState([])
+	const [teamInfo, setTeamInfo] = useState<Team | null>(null)
 	useEffect(() => {
 		const currentTeamId = pathName.split('/').pop()
+		setImageUrl(`/teams/${currentTeamId}.jpg`)
 		setTeamId(currentTeamId)
 	}, [pathName])
 
 	useEffect(() => {
-		setImageUrl(`teams/${teamId}.jpg`)
-
 		const fetchTaskData = async () => {
 			try {
 				const res = await axios.get(`${API_BASE_URL}/tasks/getAllTeamTask/${teamId}`)
@@ -47,9 +55,22 @@ const Detail = (props: Props) => {
 				console.error(error)
 			}
 		}
+		const fetchTeamData = async () => {
+			try {
+				const res = await axios.get(`${API_BASE_URL}/teams/getTeamInfo/${teamId}`)
+				if (res.status === 200) {
+					setTeamInfo(res.data[0])
+				} else {
+					console.log(res)
+				}
+			} catch (error) {
+				console.error(error)
+			}
+		}
 
 		if (teamId) {
 			fetchTaskData()
+			fetchTeamData()
 		}
 	}, [teamId])
 	const [expandedKeys, setExpandedKey] = useState<string[]>([])
@@ -66,7 +87,30 @@ const Detail = (props: Props) => {
 			<div className='return-button'>
 				<Return href='./team' text='Joined Team' />
 			</div>
-			<div className='team-header-ctn'></div>
+			<div className='team-info-ctn'>
+				<Image src={imageUrl} alt={'Team-image'} width={86} height={86} style={{ borderRadius: '50%' }} />
+				<div style={{ fontSize: 52, fontFamily: 'Roboto-Bold', fontWeight: 'bolder' }}>{teamInfo?.team_name}</div>
+				<Icon component={MoreInfoSVG} style={{ fontSize: 42 }} />
+			</div>
+			<div className='treeMenu'>
+				<div className='menu-time-ctn'>
+					<ClockCircleOutlined />
+					<div>
+						<div>Start date</div>
+						<div>Due date</div>
+					</div>
+				</div>
+				<FileProtectOutlined />
+				<div className='tree-menu-name'>Name</div>
+				<div className='tree-menu-description'>
+					<Icon component={MoreInfoSVG} style={{ color: 'black' }} />
+					<span>Description</span>
+				</div>
+				<div className='tree-menu-assign'>
+					<TeamOutlined />
+					<span>Assign to</span>
+				</div>
+			</div>
 			<div className='tree-ctn'>
 				<Tree
 					showLine={true}

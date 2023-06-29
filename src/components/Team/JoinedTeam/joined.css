@@ -1,43 +1,53 @@
 .joined-team {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .joined-header {
-  display: flex;
-  justify-content: space-between;
-  margin: 20px;
-  align-items: center;
+	display: flex;
+	justify-content: space-between;
+	padding-top: 10px;
+	padding-bottom: 30px;
+	align-items: center;
+	width: 90%;
 }
 .joined-body {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-
-  height: 70vh;
-  overflow-y: scroll;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	gap: 24px;
+	height: 70vh;
+	width: max-content;
+	overflow-y: auto;
+	font-size: 20px;
 }
 .joined-input {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  align-items: center;
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
+	align-items: center;
 }
 .joined-text {
-  font-size: 32px;
-  font-weight: 400;
-  line-height: 21px;
-  letter-spacing: 0em;
-  text-align: left;
+	font-size: 32px;
+	font-weight: 400;
+	line-height: 21px;
+	letter-spacing: 0em;
+	text-align: left;
 }
 
 .team-infor-hidden {
-  display: none;
+	display: none;
 }
 
 .ant-card-body {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  gap: 30px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: row;
+}
+
+.team-info-ctn {
+	color: #808080;
+	width: 500px;
 }

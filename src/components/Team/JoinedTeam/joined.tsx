@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Navbar from '@/components/Navbar'
 import Link from 'next/link'
 import './joined.css'
-import { Avatar, Card, Skeleton, Switch } from 'antd'
+import { Avatar, Card, Image, Skeleton, Switch } from 'antd'
 import { Select } from 'antd'
 import type { SelectProps } from 'antd'
 import Button from '@/components/Button'
@@ -81,12 +81,12 @@ const JoinedTeam = (props: Props) => {
 						<div
 							key={item.team_id}
 							className={`team-infor-${selected == '' || item.team_name.includes(selected) ? '' : 'hidden'}`}>
-							<Card style={{ width: 600, marginTop: 16 }} className='Card-team'>
+							<Card style={{ width: 804, height: 'auto', borderRadius: 20 }} className='Card-team'>
 								<Meta
-									avatar={<Avatar src={item.avatar} />}
+									avatar={<Image alt='team-image' width={60} height={60} src={item.avatar} />}
 									title={item.team_name}
 									description={
-										<div>
+										<div className='team-info-ctn'>
 											<div>
 												{item.public ? 'Công khai' : 'Bí mật'} - {item.member_count} thành viên
 											</div>
@@ -102,6 +102,7 @@ const JoinedTeam = (props: Props) => {
 											width: '131px',
 											height: '48px',
 											padding: '10px',
+											cursor: 'pointer',
 										}}>
 										View Detail
 									</Button>

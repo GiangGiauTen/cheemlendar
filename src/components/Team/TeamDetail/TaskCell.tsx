@@ -8,7 +8,6 @@ import ProgressSVG from '@public/icons/ProgressSVG'
 import ExpandSVG from '@public/icons/ExpandSVG'
 import CollapseSVG from '@public/icons/CollapseSVG'
 import MoreOptionSVG from '@public/icons/MoreOptionSVG'
-import { Button } from 'antd'
 import './taskcell.css'
 
 type Props = {

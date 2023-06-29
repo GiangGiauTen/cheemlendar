@@ -1,0 +1,33 @@
+.parentTask,
+.childTask {
+	display: flex;
+	flex-direction: row;
+	width: 1160px;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+}
+
+.parentTask {
+	background-color: #fff;
+	border: 1px solid #000;
+	border-radius: 5px;
+	padding-left: 12px;
+}
+.childTask {
+	background-color: #efefef;
+	width: 1136px;
+}
+.time-ctn {
+	width: 68px;
+	padding-left: 24px;
+}
+.task-name {
+	width: 120px;
+}
+.task-description {
+	width: 655px;
+}
+.assign {
+	width: 120px;
+}

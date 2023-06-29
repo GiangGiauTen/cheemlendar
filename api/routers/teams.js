@@ -21,5 +21,18 @@ module.exports = (pool) => {
 		})
 	})
 
+	// GET /api/teams/getTeamInfo/:id
+	router.get('/getTeamInfo/:id', (req, res) => {
+		const teamId = req.params.id
+		const query = `SELECT * FROM team WHERE team.team_id = ?`
+		pool.query(query, [teamId], (error, result) => {
+			if (error) {
+				console.error('Fetching data:', error)
+				res.status(500).json({ error: 'Internal server error' })
+				return
+			}
+			res.status(200).json(result)
+		})
+	})
 	return router
 }

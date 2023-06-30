@@ -70,9 +70,9 @@ const JoinedTeam = (props: Props) => {
 							onClick={() => {
 								console.log(selectedValue)
 							}}>
-							<Link className={'joined-button-ctn'} href={'create-team'}>
+							<a className={'joined-button-ctn'} href={'create-team'}>
 								Join or create a team
-							</Link>
+							</a>
 						</Button>
 					</div>
 				</div>

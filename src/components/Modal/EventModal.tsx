@@ -5,7 +5,6 @@ import './event_modal.css'
 import dayjs, { Dayjs } from 'dayjs'
 import colorStyles from '@/utils/eventColor'
 const { Option } = Select
-const modeOptions = ['create', 'edit'] as const
 type Props = {
 	calendarCategory: any
 	data: any

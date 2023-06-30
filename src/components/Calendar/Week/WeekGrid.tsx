@@ -51,7 +51,7 @@ const WeekGrid = (props: Props) => {
 		  }
 		| undefined
 	>(undefined)
-	const [modalData, setModalData] = useState({})
+	const [modalData, setModalData] = useState<any>({})
 	const [isModalOpen, setIsModalOpen] = useState(false)
 	const [mousePos, setMousePos] = useState<{ x: number; y: number }>({ x: 0, y: 0 })
 	const gridRef = useRef<HTMLDivElement>(null)
@@ -147,8 +147,24 @@ const WeekGrid = (props: Props) => {
 		setModalData(Object.assign({}, modalData, newData))
 	}
 
-	function handleSubmit() {
-		console.log(modalData)
+	const handleSubmit = async () => {
+		try {
+			if (modalData.mode == 'create') {
+				const submitRes = await axios.post(`${API_BASE_URL}/events/`, {
+					calendar_id: modalData.category,
+					event_title: modalData.title,
+					start_datetime: new Date(modalData.timeStart.getTime() + 25200000).toISOString(),
+					end_datetime: new Date(modalData.timeEnd.getTime() + 25200000).toISOString(),
+					color_theme: modalData.colorTheme,
+					description: modalData.description,
+				})
+				if (submitRes.status == 201) {
+					window.location.reload()
+				}
+			}
+		} catch (err) {
+			console.log(err)
+		}
 	}
 
 	return (
@@ -170,10 +186,11 @@ const WeekGrid = (props: Props) => {
 				</div>
 			))}
 			{events &&
-				events.map((e) => {
+				events.map((e: any) => {
 					return (
 						<Event
-							key={e['event_id']}
+							key={e.event_id}
+							event_id={e.event_id}
 							weekStart={props.weekStart}
 							timeStart={new Date(e['start_datetime'])}
 							timeEnd={new Date(e['end_datetime'])}

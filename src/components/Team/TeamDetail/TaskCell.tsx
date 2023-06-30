@@ -16,7 +16,7 @@ type Props = {
 }
 const TaskCell = (props: Props) => {
 	const [isCollapse, setIsCollapse] = useState(false)
-	const [name, setName] = useState(localStorage.getItem('user'))
+	const [name, setName] = useState(localStorage.getItem('name'))
 	return (
 		<>
 			{

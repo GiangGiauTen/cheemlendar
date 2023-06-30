@@ -1,24 +1,30 @@
 .custom-btn-primary,
 .custom-btn-primary:hover {
-  background-color: #ff7e04;
-  color: white;
-  padding: 16px 32px;
-  border: 0px;
-  font-weight: bold;
-  border-radius: 100px;
+	background-color: #ff7e04;
+	color: white;
+	padding: 16px 32px;
+	border: 0px;
+	font-weight: bold;
+	border-radius: 100px;
 }
 
 .custom-btn-secondary,
-.custom-btn-secondary:hover {
-  background-color: #fff;
-  color: #4e4e4e1a;
-  padding: 16px 32px;
-  border: 0px;
-  font-weight: bold;
-  border-radius: 100px;
+.custom-btn-secondary:hover,
+.custom-btn-secondary:visited,
+.custom-btn-secondary:active,
+.custom-btn-secondary:link {
+	background-color: #fff;
+	color: #4e4e4e1a !important;
+	padding: 16px 32px;
+	border: 0px;
+	font-weight: bold;
+	border-radius: 100px;
 }
 
 a {
-  text-decoration: none;
-  color: inherit;
+	text-decoration: none;
+	color: inherit;
+}
+.custom-btn-secondary a {
+	color: #000;
 }

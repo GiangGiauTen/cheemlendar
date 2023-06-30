@@ -1,13 +1,14 @@
-import React from "react"
-import Navbar from "@/components/Navbar"
+import React from 'react'
+import Navbar from '@/components/Navbar'
+import Home from '@/components/Page/Home/Home'
 type Props = {}
 
 const page = (props: Props) => {
-  return (
-    <div>
-      <Navbar activeNav={"home"} />
-    </div>
-  )
+	return (
+		<div>
+			<Home />
+		</div>
+	)
 }
 
 export default page

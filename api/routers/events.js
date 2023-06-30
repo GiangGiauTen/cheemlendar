@@ -18,7 +18,7 @@ module.exports = (pool) => {
 		})
 	})
 
-	// POST /api/events/getAllEvents
+	// POST /api/events/
 	router.post('/', (req, res) => {
 		const { calendar_id, event_title, start_datetime, end_datetime, color_theme, description } = req.body
 		const query =
@@ -33,5 +33,20 @@ module.exports = (pool) => {
 			res.status(201).json({ message: 'Event created successfully' })
 		})
 	})
+
+	router.delete('/:id', (req, res) => {
+		const event_id = req.params.id
+		const query = 'DELETE FROM Events WHERE event_id = ?'
+		const values = [event_id]
+		pool.query(query, values, (error, result) => {
+			if (error) {
+				console.error('Error delete event:', error)
+				res.status(500).json({ error: 'Internal server error' })
+				return
+			}
+			res.status(200).json({ message: 'Event delete successfully' })
+		})
+	})
+
 	return router
 }

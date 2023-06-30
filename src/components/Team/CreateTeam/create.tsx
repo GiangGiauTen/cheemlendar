@@ -86,7 +86,7 @@ const CreateTeam = (props: Props) => {
   return (
     <div className="page">
       <div className="return-button">
-        <Return href="./team" text="Joined Team" />
+        <Return href="/team" text="Joined Team" />
       </div>
       <div className="create-team">
         <div className="create-header">

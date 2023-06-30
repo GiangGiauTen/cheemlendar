@@ -85,9 +85,9 @@ const Detail = (props: Props) => {
 	return (
 		<div>
 			<div className='return-button'>
-				<Return href='./team' text='Joined Team' />
+				<Return href='/team' text='Joined Team' />
 			</div>
-			<div className='team-info-ctn'>
+			<div className='team-detail-info-ctn'>
 				<Image src={imageUrl} alt={'Team-image'} width={86} height={86} style={{ borderRadius: '50%' }} />
 				<div style={{ fontSize: 52, fontFamily: 'Roboto-Bold', fontWeight: 'bolder' }}>{teamInfo?.team_name}</div>
 				<Icon component={MoreInfoSVG} style={{ fontSize: 42 }} />
